@@ -14,6 +14,7 @@
 		1E20DE121FF50FD60040463F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E20DE111FF50FD60040463F /* Assets.xcassets */; };
 		1E20DE151FF50FD60040463F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E20DE131FF50FD60040463F /* LaunchScreen.storyboard */; };
 		1E20DE1E1FF513CA0040463F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20DE1D1FF513CA0040463F /* LoginController.swift */; };
+		1E37F3511FF6895F00AD00A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3705281FF589D00011FC9C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E20DE151FF50FD60040463F /* LaunchScreen.storyboard in Resources */,
+				1E37F3511FF6895F00AD00A0 /* GoogleService-Info.plist in Resources */,
 				1E20DE121FF50FD60040463F /* Assets.xcassets in Resources */,
 				1E20DE101FF50FD60040463F /* Main.storyboard in Resources */,
 			);

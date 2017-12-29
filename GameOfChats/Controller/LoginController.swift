@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     
@@ -19,15 +20,48 @@ class LoginController: UIViewController {
         return view
     }()
     
-    let loginRegisterButton: UIButton = {
+    lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(displayP3Red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
         button.setTitle("Register", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
         return button
     }()
+    
+    //sending to firebase db
+    
+    @objc func handleRegistration() {
+        guard let email = emailTextField.text,let password = passwordTextField.text, let name = nameTextField.text else
+        {
+            print("Form is not valid")
+            return
+        }
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (
+            user: User?, error) in
+            if error != nil {
+                print (error!)
+                return
+            }
+            guard let uid = user?.uid  else {
+                return
+            }
+            
+            let ref = Database.database().reference(fromURL: "https://fir-chat-4ce61.firebaseio.com/")
+            let userReference = ref.child("users").child(uid)
+            let values = ["name": name,"email": email]
+            userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if err != nil {
+                    print(err!)
+                    return
+                }
+                print("Succesfully saved into firebase db")
+            })
+        })
+    }
+    
     
     let nameTextField: UITextField = {
         let tf = UITextField()
@@ -163,6 +197,8 @@ class LoginController: UIViewController {
     func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .lightContent
     }
+    
+    
     
 }
 
