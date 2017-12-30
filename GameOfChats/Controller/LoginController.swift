@@ -82,6 +82,12 @@ class LoginController: UIViewController {
             }
             else{
                 self.dismiss(animated: true, completion: nil)
+                let uid = Auth.auth().currentUser?.uid
+                Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String : AnyObject] {
+                        self.navigationItem.title = dictionary["name"] as? String
+                    }
+                }, withCancel: nil)
             }
         }
         
@@ -162,6 +168,8 @@ class LoginController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
