@@ -17,6 +17,7 @@
 		1E20DE151FF50FD60040463F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E20DE131FF50FD60040463F /* LaunchScreen.storyboard */; };
 		1E20DE1E1FF513CA0040463F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20DE1D1FF513CA0040463F /* LoginController.swift */; };
 		1E37F3511FF6895F00AD00A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3705281FF589D00011FC9C /* GoogleService-Info.plist */; };
+		1ED0F5F91FF82A4D00B1C0A3 /* LoginController+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED0F5F81FF82A4D00B1C0A3 /* LoginController+handler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		1E20DE161FF50FD60040463F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E20DE1D1FF513CA0040463F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1E3705281FF589D00011FC9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1ED0F5F81FF82A4D00B1C0A3 /* LoginController+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+handler.swift"; sourceTree = "<group>"; };
 		26E5F8B284271A82185BD562 /* Pods-GameOfChats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameOfChats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GameOfChats/Pods-GameOfChats.debug.xcconfig"; sourceTree = "<group>"; };
 		3E5D0C1C10B8DE6C63E95460 /* Pods_GameOfChats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameOfChats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B70697683730F45CCEBEFB /* Pods-GameOfChats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameOfChats.release.xcconfig"; path = "Pods/Target Support Files/Pods-GameOfChats/Pods-GameOfChats.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				1E20DE0C1FF50FD60040463F /* MessagesController.swift */,
 				1E20DE1D1FF513CA0040463F /* LoginController.swift */,
 				1E17266E1FF7C53C00F13F20 /* NewMessageController.swift */,
+				1ED0F5F81FF82A4D00B1C0A3 /* LoginController+handler.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ED0F5F91FF82A4D00B1C0A3 /* LoginController+handler.swift in Sources */,
 				1E17266F1FF7C53C00F13F20 /* NewMessageController.swift in Sources */,
 				1E20DE0D1FF50FD60040463F /* MessagesController.swift in Sources */,
 				1E20DE1E1FF513CA0040463F /* LoginController.swift in Sources */,
