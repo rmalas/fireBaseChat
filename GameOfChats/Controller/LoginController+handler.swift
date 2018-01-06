@@ -65,28 +65,6 @@ extension LoginController: UIImagePickerControllerDelegate,UINavigationControlle
         }
     }
     
-    func handleLogin() {
-        guard let email = emailTextField.text,let password = passwordTextField.text else {
-            print("not valid data")
-            return
-        }
-        Auth.auth().signIn(withEmail: email,password: password) { (user,err) in
-            if err != nil {
-                print(err!)
-                return
-            }
-            else{
-                self.dismiss(animated: true, completion: nil)
-                let uid = Auth.auth().currentUser?.uid
-                Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-                    if let dictionary = snapshot.value as? [String : AnyObject] {
-                        self.navigationItem.title = dictionary["name"] as? String
-                    }
-                }, withCancel: nil)
-            }
-        }
-    }
-    
     //sending to firebase db
     
     func handleRegistration() {
@@ -105,8 +83,8 @@ extension LoginController: UIImagePickerControllerDelegate,UINavigationControlle
                 return
             }
             let imageName = NSUUID().uuidString
-            let storage = Storage.storage().reference().child("\(imageName).png")
-            if let uploadData = UIImagePNGRepresentation(self.profilePicture.image!) {
+            let storage = Storage.storage().reference().child("\(imageName).jpg")
+            if let uploadData = UIImageJPEGRepresentation(self.profilePicture.image!, 0.1) {
                 storage.putData(uploadData, metadata: nil, completion: { (metadata, nil) in
                     if error != nil {
                         print(error!)
@@ -121,6 +99,22 @@ extension LoginController: UIImagePickerControllerDelegate,UINavigationControlle
         })
     }
     
+    func handleLogin() {
+        guard let email = emailTextField.text,let password = passwordTextField.text else {
+            print("not valid data")
+            return
+        }
+        Auth.auth().signIn(withEmail: email,password: password) { (user,err) in
+            if err != nil {
+                print(err!)
+                return
+            }
+            self.messagesController?.navigationItem.title = "Chats"
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
     private func registerUserIntoDataBase(uid: String, values: [String:AnyObject]) {
         let ref = Database.database().reference(fromURL: "https://fir-chat-4ce61.firebaseio.com/")
         let userReference = ref.child("users").child(uid)
@@ -129,6 +123,7 @@ extension LoginController: UIImagePickerControllerDelegate,UINavigationControlle
                 print(err!)
                 return
             }
+            self.messagesController?.setNameToTitleBar()
             self.dismiss(animated: true, completion: nil)
         })
     }
